@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Form, Checkbox, Button } from "antd";
+import { ComponentToggler } from "./component-toggler";
 
 export function EffectsVersions() {
-  const [showEmptyArrayVersion, setShowEmptyArrayVersion] = useState<boolean>(
-    false
-  );
-
   const [showNoArrayVersion, setShowNoArrayVersion] = useState<boolean>(false);
 
   const [showStateInArrayVersion, setShowStateInArrayVersion] = useState<
@@ -15,38 +12,17 @@ export function EffectsVersions() {
   return (
     <div>
       <Form>
-        {showEmptyArrayVersion && <EmptyArrayVersion />}
-        <Form.Item name="emptyArray" valuePropName="checked">
-          <Checkbox
-            onChange={({ target: { checked } }) =>
-              setShowEmptyArrayVersion(checked)
-            }
-          >
-            Show 'Empty Array' version
-          </Checkbox>
-        </Form.Item>
+        <ComponentToggler title="Empty Array Version">
+          <EmptyArrayVersion />
+        </ComponentToggler>
 
-        {showNoArrayVersion && <NoArrayVersion />}
-        <Form.Item name="noArray" valuePropName="checked">
-          <Checkbox
-            onChange={({ target: { checked } }) =>
-              setShowNoArrayVersion(checked)
-            }
-          >
-            Show 'No Array' version
-          </Checkbox>
-        </Form.Item>
+        <ComponentToggler title="No Array Version">
+          <NoArrayVersion />
+        </ComponentToggler>
 
-        {showStateInArrayVersion && <StatePropertyArrayVersion />}
-        <Form.Item name="statePropertyInArray" valuePropName="checked">
-          <Checkbox
-            onChange={({ target: { checked } }) =>
-              setShowStateInArrayVersion(checked)
-            }
-          >
-            Show 'State Property In Array' version
-          </Checkbox>
-        </Form.Item>
+        <ComponentToggler title="State Property In Array Version">
+          <StatePropertyArrayVersion />
+        </ComponentToggler>
       </Form>
     </div>
   );
