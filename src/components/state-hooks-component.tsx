@@ -4,6 +4,8 @@ import { Form, Input, Button } from 'antd';
 interface Props {
 }
 
+const validationRulesForNameInput = [{ required: true, message: 'Please input your username!' }];
+
 export const StateHooksComponent: React.FC<Props> = ({}) => {
   const defaultName = 'Béla';
 
@@ -21,7 +23,7 @@ export const StateHooksComponent: React.FC<Props> = ({}) => {
 
   return (
       <Form layout="inline" onFinish={handleSubmit}>
-          <Form.Item>
+          <Form.Item name="name" rules={validationRulesForNameInput}>
             <Input type="text" placeholder="name" value={name} onChange={onNameChange} />
           </Form.Item>
           <Form.Item>
